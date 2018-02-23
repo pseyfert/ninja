@@ -1048,7 +1048,7 @@ int ReadFlags(int* argc, char*** argv,
 
   int opt;
   while (!options->tool &&
-         (opt = getopt_long(*argc, *argv, "d:f:j:k:l:nt:vw:C:h", kLongOptions,
+         (opt = getopt_long(*argc, *argv, "d:f:j:k:l:nt:vw:C:ch", kLongOptions,
                             NULL)) != -1) {
     switch (opt) {
       case 'd':
@@ -1104,11 +1104,11 @@ int ReadFlags(int* argc, char*** argv,
       case 'C':
         options->working_dir = optarg;
         break;
-      case OPT_VERSION:
-        printf("%s\n", kNinjaVersion);
-        return 0;
       case 'c':
         config->force_color_output = true;
+        break;
+      case OPT_VERSION:
+        printf("%s\n", kNinjaVersion);
         return 0;
       case 'h':
       default:
